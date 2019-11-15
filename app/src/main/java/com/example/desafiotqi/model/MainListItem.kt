@@ -11,8 +11,8 @@ open class MainListItem {
   }
 
   companion object {
-    private const val FAVORITES = "Favoritos"
-    private const val OTHERS = "Outros"
+    private const val FAVORITES = "Mais utilizadas"
+    private const val OTHERS = "Outras"
 
     fun addCategories(banks: List<Bank>): ArrayList<MainListItem> {
       val sorted = banks.sorted()

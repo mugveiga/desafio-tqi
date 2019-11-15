@@ -10,6 +10,7 @@ import com.example.desafiotqi.databinding.RowBankBinding
 import com.example.desafiotqi.databinding.RowCategoryBinding
 import com.example.desafiotqi.model.Bank
 import com.example.desafiotqi.model.MainListItem
+import java.text.Normalizer
 
 class MainAdapter :
   RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
@@ -22,21 +23,24 @@ class MainAdapter :
     const val TYPE_CATEGORY = 1
   }
 
+  private fun stripAccents(s: String): String {
+    val temp = Normalizer.normalize(s, Normalizer.Form.NFD)
+    return temp.replace("[\\p{InCombiningDiacriticalMarks}]".toRegex(), "")
+  }
+
   override fun getFilter(): Filter {
     return object : Filter() {
       @SuppressLint("DefaultLocale")
       override fun performFiltering(charSequence: CharSequence?): FilterResults {
 
-        val charString = charSequence.toString().toLowerCase()
+        val charString = stripAccents(charSequence.toString().toLowerCase())
         val results = if (charString.isEmpty()) {
           fullList
         } else {
           val newFilteredList = ArrayList<MainListItem>()
           val onlyBanks = MainListItem.filterBanks(fullList)
           for (bank in onlyBanks) {
-            if (bank.name.toLowerCase().contains(charString)
-              || bank.code.toLowerCase().contains(charString)
-            ) {
+            if (stripAccents(bank.name.toLowerCase()).contains(charString)) {
               newFilteredList.add(bank)
             }
           }
