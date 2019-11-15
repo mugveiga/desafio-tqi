@@ -23,6 +23,7 @@
 
         <ImageView
             android:id="@+id/imgLogo"
+            imageFromUrl="@{bank.image}"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="@dimen/component_spacing"
