@@ -28,18 +28,7 @@ class MainViewModel(
     loadingState.value = true
     repository.getBanks(object : RequestCallback<List<Bank>> {
       override fun onSuccess(response: List<Bank>) {
-        val sorted = response.sorted()
-        val list = ArrayList<MainListItem>()
-        list.add(MainListItem("Favoritos"))
-        var secondHeaderAdded = false
-        for (bank in sorted) {
-          if (!bank.favorite && !secondHeaderAdded) {
-            list.add(MainListItem("Outros"))
-            secondHeaderAdded = true
-          }
-          list.add(bank)
-        }
-        items.postValue(list)
+        items.postValue(MainListItem.addCategories(response))
         loadingState.postValue(false)
       }
 

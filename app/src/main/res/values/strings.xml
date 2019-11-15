@@ -5,4 +5,6 @@
     <string name="generic_error">Erro inesperado</string>
     <string name="timeout_error">Ops.. isso está demorando muito tempo. Tente novamente mais tarde.</string>
     <string name="no_internet">Sem conexão!</string>
+    <string name="finantial_institution">Instituição Financeira</string>
+    <string name="search_institution">Buscar instituição</string>
 </resources>

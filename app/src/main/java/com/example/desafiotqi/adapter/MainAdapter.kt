@@ -1,9 +1,10 @@
 package com.example.desafiotqi.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desafiotqi.databinding.RowBankBinding
 import com.example.desafiotqi.databinding.RowCategoryBinding
@@ -11,11 +12,52 @@ import com.example.desafiotqi.model.Bank
 import com.example.desafiotqi.model.MainListItem
 
 class MainAdapter :
-  ListAdapter<MainListItem, RecyclerView.ViewHolder>(MainListItemDiffCallback()) {
+  RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
+
+  private lateinit var fullList: ArrayList<MainListItem>
+  private lateinit var filteredList: ArrayList<MainListItem>
 
   companion object {
     const val TYPE_BANK = 2
     const val TYPE_CATEGORY = 1
+  }
+
+  override fun getFilter(): Filter {
+    return object : Filter() {
+      @SuppressLint("DefaultLocale")
+      override fun performFiltering(charSequence: CharSequence?): FilterResults {
+
+        val charString = charSequence.toString().toLowerCase()
+        val results = if (charString.isEmpty()) {
+          fullList
+        } else {
+          val newFilteredList = ArrayList<MainListItem>()
+          val onlyBanks = MainListItem.filterBanks(fullList)
+          for (bank in onlyBanks) {
+            if (bank.name.toLowerCase().contains(charString)
+              || bank.code.toLowerCase().contains(charString)
+            ) {
+              newFilteredList.add(bank)
+            }
+          }
+          newFilteredList
+        }
+        val filterResults = FilterResults()
+        filterResults.values = results
+        return filterResults
+      }
+
+      override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+        if (p1 != null) {
+          filteredList = p1.values as ArrayList<MainListItem>
+          notifyDataSetChanged()
+        }
+      }
+    }
+  }
+
+  override fun getItemCount(): Int {
+    return filteredList.size
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -41,6 +83,16 @@ class MainAdapter :
     } else {
       (holder as CategoryViewHolder).bind(item)
     }
+  }
+
+  fun submitList(list: ArrayList<MainListItem>) {
+    fullList = list
+    filteredList = list
+    notifyDataSetChanged()
+  }
+
+  private fun getItem(position: Int): MainListItem {
+    return filteredList[position]
   }
 
   class BankViewHolder(
@@ -78,25 +130,6 @@ class MainAdapter :
         this.category = category
         executePendingBindings()
       }
-    }
-  }
-}
-
-private class MainListItemDiffCallback : DiffUtil.ItemCallback<MainListItem>() {
-
-  override fun areItemsTheSame(oldItem: MainListItem, newItem: MainListItem): Boolean {
-    return oldItem.name == newItem.name
-  }
-
-  override fun areContentsTheSame(oldItem: MainListItem, newItem: MainListItem): Boolean {
-    val compare1 = oldItem.name == newItem.name
-    return if (oldItem is Bank && newItem is Bank) {
-      val compare2 = oldItem.favorite == newItem.favorite
-      val compare3 = oldItem.code == newItem.code
-      val compare4 = oldItem.image == newItem.image
-      compare1 && compare2 && compare3 && compare4
-    } else {
-      compare1
     }
   }
 }
