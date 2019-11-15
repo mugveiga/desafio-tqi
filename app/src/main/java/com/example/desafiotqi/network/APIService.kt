@@ -39,6 +39,6 @@ private fun getRetrofit(): Retrofit {
         .baseUrl(context.getString(R.string.base_url)).build()
 }
 
-object VidaasApi {
+object ApiServices {
     val myApi: MyApi by lazy { getRetrofit().create(MyApi::class.java) }
 }

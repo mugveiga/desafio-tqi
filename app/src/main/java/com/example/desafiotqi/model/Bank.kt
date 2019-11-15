@@ -11,4 +11,8 @@ class Bank : MainListItem(), Comparable<Bank> {
     if (compareFavorite == 0) return name.compareTo(other.name)
     return compareFavorite
   }
+
+  fun displayName() : String {
+    return "$code - $name"
+  }
 }

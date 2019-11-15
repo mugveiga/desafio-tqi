@@ -13,7 +13,7 @@ class MainViewModel(
 ) : ViewModel() {
 
   val loadingState: MutableLiveData<Boolean> = MutableLiveData(true)
-  val items: MutableLiveData<List<MainListItem>> = MutableLiveData(ArrayList())
+  val items: MutableLiveData<ArrayList<MainListItem>> = MutableLiveData(ArrayList())
   val error: MutableLiveData<String> = MutableLiveData("")
 
   init {
