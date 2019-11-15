@@ -12,6 +12,7 @@
         android:layout_height="24dp"
         android:layout_marginStart="@dimen/component_spacing"
         android:contentDescription="@string/description_logo"
+        android:src="@drawable/ic_bank"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,6 +37,7 @@
         android:layout_height="24dp"
         android:layout_marginEnd="@dimen/component_spacing"
         android:contentDescription="@string/description_arrow"
+        android:src="@drawable/ic_chevron_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
