@@ -7,5 +7,5 @@ interface RequestCallback<T> {
 
   fun onSuccess(response: T)
 
-  fun onFailure(error: MyError)
+  fun onFailure(myError: MyError)
 }

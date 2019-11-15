@@ -1,9 +1,14 @@
 package com.example.desafiotqi.model
 
-class Bank {
+class Bank : MainListItem(), Comparable<Bank> {
 
-    lateinit var name: String
-    lateinit var code: String
-    var favorite: Boolean = false
-    lateinit var image: String
+  lateinit var code: String
+  var favorite: Boolean = false
+  lateinit var image: String
+
+  override fun compareTo(other: Bank): Int {
+    val compareFavorite = favorite.compareTo(other.favorite)
+    if (compareFavorite == 0) return name.compareTo(other.name)
+    return compareFavorite
+  }
 }

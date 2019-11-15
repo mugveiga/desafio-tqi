@@ -7,12 +7,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RequestController {
-
-  private val internetUtil = InternetServices()
+class RequestController(
+  private val internetServices: InternetServices
+) {
 
   fun <T> runAssync(call: Call<T>, listener: RequestCallback<T>?) {
-    if (internetUtil.isNetworkConnected()) {
+    if (internetServices.isNetworkConnected()) {
       call.enqueue(object : Callback<T> {
         override fun onResponse(call: Call<T>, response: Response<T>) {
           if (response.isSuccessful && response.body() != null) {
