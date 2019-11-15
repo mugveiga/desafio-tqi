@@ -1,8 +1,9 @@
-package com.example.desafiotqi
+package com.example.desafiotqi.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.example.desafiotqi.R
 import com.example.desafiotqi.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 

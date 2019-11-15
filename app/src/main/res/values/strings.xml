@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Desafio TQI</string>
-    <string name="action_settings">Settings</string>
     <string name="description_logo">Logo da instituição financeira</string>
     <string name="description_arrow">Avançar</string>
 </resources>

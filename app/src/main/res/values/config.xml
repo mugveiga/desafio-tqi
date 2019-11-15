@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="base_url">https://private-anon-b3959a0cb0-tqiandroid.apiary-mock.com/</string>
+    <string name="api_timeout_seconds">10</string>
+</resources>
