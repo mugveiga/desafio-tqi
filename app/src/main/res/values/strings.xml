@@ -2,4 +2,7 @@
     <string name="app_name">Desafio TQI</string>
     <string name="description_logo">Logo da instituição financeira</string>
     <string name="description_arrow">Avançar</string>
+    <string name="generic_error">Erro inesperado</string>
+    <string name="timeout_error">Ops.. isso está demorando muito tempo. Tente novamente mais tarde.</string>
+    <string name="no_internet">Sem conexão!</string>
 </resources>
