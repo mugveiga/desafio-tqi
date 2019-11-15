@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.desafiotqi.R
+import com.example.desafiotqi.adapter.MainAdapter
 import com.example.desafiotqi.viewmodel.InjectorUtils
 import com.example.desafiotqi.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,8 +23,16 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
     setSupportActionBar(toolbar)
 
-    // TODO list adapter
+    // list
+    val adapter = MainAdapter()
+    recyclerView.adapter = adapter
 
+    // swipe refresh
+    swipeRefresh.setOnRefreshListener {
+      viewModel.refresh()
+    }
+
+    // observables
     viewModel.error.observe(this, Observer {
       if (it != null && it.isNotEmpty()) {
         Toast.makeText(this@MainActivity, it, Toast.LENGTH_LONG).show()
@@ -35,11 +44,7 @@ class MainActivity : AppCompatActivity() {
     })
 
     viewModel.items.observe(this, Observer {
-      // TODO set items on adapter
+      adapter.submitList(it)
     })
-
-    swipeRefresh.setOnRefreshListener {
-      viewModel.refresh()
-    }
   }
 }

@@ -1,13 +1,15 @@
 package com.example.desafiotqi.model
 
-class Bank : MainListItem(), Comparable<Bank> {
+import java.io.Serializable
+
+class Bank : MainListItem(), Comparable<Bank>, Serializable {
 
   lateinit var code: String
   var favorite: Boolean = false
-  lateinit var image: String
+  var image: String = ""
 
   override fun compareTo(other: Bank): Int {
-    val compareFavorite = favorite.compareTo(other.favorite)
+    val compareFavorite = favorite.not().compareTo(other.favorite.not())
     if (compareFavorite == 0) return name.compareTo(other.name)
     return compareFavorite
   }
