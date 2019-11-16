@@ -1,6 +1,8 @@
 package com.example.desafiotqi.model
 
-open class MainListItem {
+import java.io.Serializable
+
+open class MainListItem : Serializable {
 
   lateinit var name: String
 

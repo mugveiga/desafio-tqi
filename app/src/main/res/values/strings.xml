@@ -7,4 +7,10 @@
     <string name="no_internet">Sem conexão!</string>
     <string name="finantial_institution">Instituição Financeira</string>
     <string name="search_institution">Buscar instituição</string>
+    <string name="form_header">Você selecionou esse banco para sua transferência:</string>
+    <string name="bank">Banco:</string>
+    <string name="code">Código:</string>
+    <string name="next">Continuar</string>
+    <string name="coming_soon">Em breve!</string>
+    <string name="form">Formulário</string>
 </resources>

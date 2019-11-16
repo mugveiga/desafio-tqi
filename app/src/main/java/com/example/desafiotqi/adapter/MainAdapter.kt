@@ -1,11 +1,14 @@
 package com.example.desafiotqi.adapter
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.example.desafiotqi.activity.FormActivity
 import com.example.desafiotqi.databinding.RowBankBinding
 import com.example.desafiotqi.databinding.RowCategoryBinding
 import com.example.desafiotqi.model.Bank
@@ -104,17 +107,13 @@ class MainAdapter :
   ) : RecyclerView.ViewHolder(binding.rootView) {
     init {
       binding.setClickListener {
-
-        // TODO go to bank activity
-//        val bank = binding.bank!!
-//        val context = itemView.context
-//        val intent = Intent(context, BankActivity::class.java)
-//        val b = Bundle()
-//        b.putSerializable(
-//          BankActivity.INTENT_PARAM_BANK, bank
-//        )
-//        intent.putExtras(b)
-//        context.startActivity(intent)
+        val bank = binding.bank!!
+        val context = itemView.context
+        val intent = Intent(context, FormActivity::class.java)
+        val b = Bundle()
+        b.putSerializable(FormActivity.INTENT_PARAM_BANK, bank)
+        intent.putExtras(b)
+        context.startActivity(intent)
       }
     }
 

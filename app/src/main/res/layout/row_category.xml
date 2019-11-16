@@ -6,13 +6,8 @@
     <data>
 
         <variable
-            name="clickListener"
-            type="android.view.View.OnClickListener" />
-
-        <variable
             name="category"
             type="com.example.desafiotqi.model.MainListItem" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
