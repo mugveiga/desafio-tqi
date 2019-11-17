@@ -9,7 +9,7 @@ import com.example.desafiotqi.network.RequestCallback
 import com.example.desafiotqi.repository.BankRepository
 
 class MainViewModel(
-  private val repository: BankRepository
+  var repository: BankRepository
 ) : ViewModel() {
 
   val loadingState: MutableLiveData<Boolean> = MutableLiveData(true)
@@ -25,7 +25,7 @@ class MainViewModel(
   }
 
   private fun retrieveBanks() {
-    loadingState.value = true
+    loadingState.postValue(true)
     repository.getBanks(object : RequestCallback<List<Bank>> {
       override fun onSuccess(response: List<Bank>) {
         items.postValue(MainListItem.addCategories(response))

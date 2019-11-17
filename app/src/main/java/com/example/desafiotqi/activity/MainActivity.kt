@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
   private val adapter = MainAdapter()
   private lateinit var searchView: SearchView
-  private val viewModel: MainViewModel by viewModels {
+  val viewModel: MainViewModel by viewModels {
     InjectorUtils.provideMainViewModelFactory()
   }
 

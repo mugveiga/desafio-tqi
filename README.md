@@ -1,5 +1,4 @@
 # desafio-tqi
-prova de android da tqi:
 -> Kotlin
 -> MVVM
 -> MutableLiveData
@@ -8,3 +7,5 @@ prova de android da tqi:
 -> Glide
 -> BindingAdapters
 -> SearchView, RecyclerView
+-> Espresso tests examples on search feature
+-> Mockk example usage: mocking backend data returned
